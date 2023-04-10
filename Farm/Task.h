@@ -7,10 +7,10 @@
 
 class Task {
 public:
-    Task() = default;
-    virtual ~Task() = default;
+    int id; // worker ID
+    int parameter; // The parameter passes to the function
+    bool EOS;
 
-    virtual void execute() = 0;//needs to be overridden in derived classes
 };
 
 

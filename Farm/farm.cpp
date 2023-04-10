@@ -30,7 +30,7 @@ void *worker_function(void *arg) {
 
 
 
-void farm(int num_workers, void (*worker_func)(void)) {
+void farm(int num_workers, void (*worker_func)()) {
     pthread_t *threads = (pthread_t *)malloc(num_workers * sizeof(pthread_t));
     worker_data_t *worker_data = (worker_data_t *)malloc(num_workers * sizeof(worker_data_t));
 

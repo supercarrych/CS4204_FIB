@@ -8,10 +8,7 @@
 #include <mutex>
 #include <condition_variable>
 
-typedef struct  {
-    void* func;      // The function pointer
-    void* parameter; // The parameter passes to the function
-} Task;
+
 
 class Queue {
 private:

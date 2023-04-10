@@ -1,34 +1,39 @@
 //
 // Created by hc237 on 07/04/23.
 //
-
-
 #include <chrono>
 #include <cstdio>
 #include <iostream>
-#include "fibonacci/fibonacci.h"
 #include "Farm/farm.hpp"
-
+#include "fibonacci/fibonacci.h"
 
 int worker(int i) {
+    printf("Worker %d is running.\n",i);
     int res;
     res = payload1(i);
     payload2(res);
     return res;
 }
 
-static void WorkerWrapper(farm::Queue inputQueue, farm::Queue outputQueue) {
+void *WorkerWrapper(void *args) {
+    // Assuming your farm::Queue and farm::Task are defined, adjust the names if needed
+    farm::Queue *inputQueue = ((farm::Queue **)args)[0];
+    farm::Queue *outputQueue = ((farm::Queue **)args)[1];
     farm::Task task;
     int result;
-    if (inputQueue.task_queue.empty()) {
+    if (inputQueue->task_queue.empty()) {
         task.EOS = true;
     }
     while (!task.EOS) {
-        task = farm::getTask(inputQueue);
+        task = farm::getTask(*inputQueue);
         result = worker(task.parameter);
-        farm::putTask(outputQueue, reinterpret_cast<farm::Task &>(result));
+        task.result = result;
+        printf("Worker %d result is %d.\n",task.id,task.result);
+        printf("EOS = %d.\n",task.EOS);
+        farm::putTask(*outputQueue, task);
     }
 
+    return nullptr;
 }
 
 void fibonacci() {
@@ -37,21 +42,19 @@ void fibonacci() {
     farm::Task task;
     printf("1");
     task.EOS = false;
-    printf("%s", reinterpret_cast<const char *>(task.EOS));
+    std::cout<<task.EOS;
     for (int i = 0; i < 100; i++) {
         task.id = i;
         task.parameter = i;
         farm::putTask(inputQueue, task);
-//        res = payload1(i);
-//        payload2(res);
-
     }
 
-    farm::createFarm(reinterpret_cast<void *(*)(void *)>(WorkerWrapper), 4);
+    farm::createFarm(WorkerWrapper, 3,&inputQueue,&outputQueue);
 
     for (int i = 0; i < 100; i++) {
         task = farm::getTask(outputQueue);
-        printf("fib(%d) = % d\n", i, task.id);
+        printf("fib(%d) = ", i);
+        std::cout<<task.result<<std::endl;
     }
 }
 
