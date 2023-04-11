@@ -83,19 +83,67 @@ CMakeFiles/CS4204_FIB.dir/openMP.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CS4204_FIB.dir/openMP.cpp.s"
 	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hc237/Documents/CS4204_FIB/openMP.cpp -o CMakeFiles/CS4204_FIB.dir/openMP.cpp.s
 
+CMakeFiles/CS4204_FIB.dir/Farm/farm.cpp.o: CMakeFiles/CS4204_FIB.dir/flags.make
+CMakeFiles/CS4204_FIB.dir/Farm/farm.cpp.o: ../Farm/farm.cpp
+CMakeFiles/CS4204_FIB.dir/Farm/farm.cpp.o: CMakeFiles/CS4204_FIB.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hc237/Documents/CS4204_FIB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/CS4204_FIB.dir/Farm/farm.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CS4204_FIB.dir/Farm/farm.cpp.o -MF CMakeFiles/CS4204_FIB.dir/Farm/farm.cpp.o.d -o CMakeFiles/CS4204_FIB.dir/Farm/farm.cpp.o -c /home/hc237/Documents/CS4204_FIB/Farm/farm.cpp
+
+CMakeFiles/CS4204_FIB.dir/Farm/farm.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CS4204_FIB.dir/Farm/farm.cpp.i"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hc237/Documents/CS4204_FIB/Farm/farm.cpp > CMakeFiles/CS4204_FIB.dir/Farm/farm.cpp.i
+
+CMakeFiles/CS4204_FIB.dir/Farm/farm.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CS4204_FIB.dir/Farm/farm.cpp.s"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hc237/Documents/CS4204_FIB/Farm/farm.cpp -o CMakeFiles/CS4204_FIB.dir/Farm/farm.cpp.s
+
+CMakeFiles/CS4204_FIB.dir/test.cpp.o: CMakeFiles/CS4204_FIB.dir/flags.make
+CMakeFiles/CS4204_FIB.dir/test.cpp.o: ../test.cpp
+CMakeFiles/CS4204_FIB.dir/test.cpp.o: CMakeFiles/CS4204_FIB.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hc237/Documents/CS4204_FIB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/CS4204_FIB.dir/test.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CS4204_FIB.dir/test.cpp.o -MF CMakeFiles/CS4204_FIB.dir/test.cpp.o.d -o CMakeFiles/CS4204_FIB.dir/test.cpp.o -c /home/hc237/Documents/CS4204_FIB/test.cpp
+
+CMakeFiles/CS4204_FIB.dir/test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CS4204_FIB.dir/test.cpp.i"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hc237/Documents/CS4204_FIB/test.cpp > CMakeFiles/CS4204_FIB.dir/test.cpp.i
+
+CMakeFiles/CS4204_FIB.dir/test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CS4204_FIB.dir/test.cpp.s"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hc237/Documents/CS4204_FIB/test.cpp -o CMakeFiles/CS4204_FIB.dir/test.cpp.s
+
+CMakeFiles/CS4204_FIB.dir/fibonacci/fibonacci.cpp.o: CMakeFiles/CS4204_FIB.dir/flags.make
+CMakeFiles/CS4204_FIB.dir/fibonacci/fibonacci.cpp.o: ../fibonacci/fibonacci.cpp
+CMakeFiles/CS4204_FIB.dir/fibonacci/fibonacci.cpp.o: CMakeFiles/CS4204_FIB.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hc237/Documents/CS4204_FIB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/CS4204_FIB.dir/fibonacci/fibonacci.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CS4204_FIB.dir/fibonacci/fibonacci.cpp.o -MF CMakeFiles/CS4204_FIB.dir/fibonacci/fibonacci.cpp.o.d -o CMakeFiles/CS4204_FIB.dir/fibonacci/fibonacci.cpp.o -c /home/hc237/Documents/CS4204_FIB/fibonacci/fibonacci.cpp
+
+CMakeFiles/CS4204_FIB.dir/fibonacci/fibonacci.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CS4204_FIB.dir/fibonacci/fibonacci.cpp.i"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hc237/Documents/CS4204_FIB/fibonacci/fibonacci.cpp > CMakeFiles/CS4204_FIB.dir/fibonacci/fibonacci.cpp.i
+
+CMakeFiles/CS4204_FIB.dir/fibonacci/fibonacci.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CS4204_FIB.dir/fibonacci/fibonacci.cpp.s"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hc237/Documents/CS4204_FIB/fibonacci/fibonacci.cpp -o CMakeFiles/CS4204_FIB.dir/fibonacci/fibonacci.cpp.s
+
 # Object files for target CS4204_FIB
 CS4204_FIB_OBJECTS = \
-"CMakeFiles/CS4204_FIB.dir/openMP.cpp.o"
+"CMakeFiles/CS4204_FIB.dir/openMP.cpp.o" \
+"CMakeFiles/CS4204_FIB.dir/Farm/farm.cpp.o" \
+"CMakeFiles/CS4204_FIB.dir/test.cpp.o" \
+"CMakeFiles/CS4204_FIB.dir/fibonacci/fibonacci.cpp.o"
 
 # External object files for target CS4204_FIB
 CS4204_FIB_EXTERNAL_OBJECTS =
 
 CS4204_FIB: CMakeFiles/CS4204_FIB.dir/openMP.cpp.o
+CS4204_FIB: CMakeFiles/CS4204_FIB.dir/Farm/farm.cpp.o
+CS4204_FIB: CMakeFiles/CS4204_FIB.dir/test.cpp.o
+CS4204_FIB: CMakeFiles/CS4204_FIB.dir/fibonacci/fibonacci.cpp.o
 CS4204_FIB: CMakeFiles/CS4204_FIB.dir/build.make
 CS4204_FIB: /usr/lib/gcc/x86_64-redhat-linux/11/libgomp.so
 CS4204_FIB: /usr/lib64/libpthread.a
 CS4204_FIB: CMakeFiles/CS4204_FIB.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hc237/Documents/CS4204_FIB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable CS4204_FIB"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hc237/Documents/CS4204_FIB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable CS4204_FIB"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/CS4204_FIB.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -21,57 +21,63 @@ void *WorkerWrapper(void *args) {
     farm::Queue *outputQueue = ((farm::Queue **)args)[1];
     farm::Task task;
     int result;
-    if (inputQueue->task_queue.empty()) {
-        task.EOS = true;
-    }
-    while (!task.EOS) {
+
+
+    while (!inputQueue->EOS) {
         task = farm::getTask(*inputQueue);
+        if (inputQueue->task_queue.empty()) {
+            inputQueue->EOS = true;
+        }
         result = worker(task.parameter);
         task.result = result;
-        printf("Worker %d result is %d.\n",task.id,task.result);
-        printf("EOS = %d.\n",task.EOS);
         farm::putTask(*outputQueue, task);
     }
 
-    return nullptr;
+    pthread_exit(nullptr);
 }
 
 void fibonacci() {
     farm::Queue inputQueue;
     farm::Queue outputQueue;
     farm::Task task;
-    printf("1");
-    task.EOS = false;
-    std::cout<<task.EOS;
+
+    inputQueue.EOS = false;
+
     for (int i = 0; i < 100; i++) {
         task.id = i;
         task.parameter = i;
         farm::putTask(inputQueue, task);
     }
 
-    farm::createFarm(WorkerWrapper, 3,&inputQueue,&outputQueue);
+    farm::Queue *args[] = {&inputQueue, &outputQueue};
+
+    printf("create thread\n");
+    farm::createFarm(reinterpret_cast<void (*)()>(WorkerWrapper), 4, args);
+
+    std::cout<<inputQueue.EOS;
 
     for (int i = 0; i < 100; i++) {
         task = farm::getTask(outputQueue);
         printf("fib(%d) = ", i);
         std::cout<<task.result<<std::endl;
     }
+
 }
 
 
-int main() {
-
-    // 获取开始时间点
-    auto start = std::chrono::high_resolution_clock::now();
-    printf("Begin\n");
-    fibonacci();
-    printf("End");
-    // 获取结束时间点
-    auto end = std::chrono::high_resolution_clock::now();
-
-    // 计算经过的时间（以毫秒为单位）
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-    std::cout << "Execution time: " << duration << " ms" << std::endl;
-
-    return 0;
-}
+//int main() {
+//
+//    // 获取开始时间点
+//    auto start = std::chrono::high_resolution_clock::now();
+//    printf("Begin\n");
+//    fibonacci();
+//    printf("End");
+//    // 获取结束时间点
+//    auto end = std::chrono::high_resolution_clock::now();
+//
+//    // 计算经过的时间（以毫秒为单位）
+//    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+//    std::cout << "Execution time: " << duration << " ms" << std::endl;
+//
+//    return 0;
+//}

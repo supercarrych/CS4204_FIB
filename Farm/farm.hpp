@@ -14,66 +14,58 @@ public:
     typedef struct {
         int id; // worker ID
         int parameter; // The parameter passes to the function
-        bool EOS;
-        int result;
+        unsigned short **result;
     } Task;
 
     typedef struct {
         std::queue<Task> task_queue;
         std::mutex queue_mutex;
         std::condition_variable not_empty_cv;
+        bool EOS;
     } Queue;
-
-    static void lockQueue(Queue &q) {
-        q.queue_mutex.lock();
-    }
-
-    static void unlockQueue(Queue &q) {
-        q.queue_mutex.unlock();
-    }
 
     static void addTask(Queue &q, Task& task) {
         q.task_queue.push(task);
     }
-
 
     static Task removeTask(Queue& q) {
         Task task;
         if (!q.task_queue.empty()) {
             task = q.task_queue.front();
             q.task_queue.pop();
+            Task t_copy = task;
+            return t_copy;
         } else {
-            task.EOS = true;
+            q.EOS = true;
         }
         return task;
     }
 
-
-    static void makeThread(void *(*Worker)(void *), farm::Queue *inputQueue, farm::Queue *outputQueue) {
+    static void makeThread(void (*Worker)(),void *args) {
         auto *thread = (pthread_t *)malloc(sizeof(pthread_t));
-        farm::Queue *args[] = {inputQueue, outputQueue};
+
         int rc;
 
-        rc = pthread_create(thread, nullptr, Worker, args);
-        std::cout<<"rc"<<rc;
+        rc = pthread_create(thread, nullptr, (void *(*)(void *))Worker, args);
+
         if (rc) {
+            printf("error");
             // Handle the error
+        } else{
+            printf("success create thread %d\n",thread);
         }
-        free(thread);
+
     }
 
-    static void createFarm(void *(*worker_wrapper)(void *), int nw,farm::Queue *inputQueue, farm::Queue *outputQueue) {
-
+    static void createFarm(void (*worker_wrapper)( ), int nw,void *args) {
          for(int n=0; n < nw; n++){
-             makeThread(worker_wrapper, inputQueue, outputQueue);
+             makeThread(worker_wrapper,args);
          }
 
      }
 
-
-
-
     static void putTask(Queue& q, Task& t) {
+        //
         std::unique_lock<std::mutex> lock(q.queue_mutex);
         addTask(q, t);
         q.not_empty_cv.notify_one(); // Notify a waiting thread that the queue is not empty
@@ -87,9 +79,6 @@ public:
         return t;
     }
 
-    static void farmPattern(int num_workers, void (*worker_func)()){
-
-    }
 };
 
 

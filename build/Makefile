@@ -129,6 +129,54 @@ CS4204_FIB/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CS4204_FIB.dir/build.make CMakeFiles/CS4204_FIB.dir/build
 .PHONY : CS4204_FIB/fast
 
+Farm/farm.o: Farm/farm.cpp.o
+.PHONY : Farm/farm.o
+
+# target to build an object file
+Farm/farm.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CS4204_FIB.dir/build.make CMakeFiles/CS4204_FIB.dir/Farm/farm.cpp.o
+.PHONY : Farm/farm.cpp.o
+
+Farm/farm.i: Farm/farm.cpp.i
+.PHONY : Farm/farm.i
+
+# target to preprocess a source file
+Farm/farm.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CS4204_FIB.dir/build.make CMakeFiles/CS4204_FIB.dir/Farm/farm.cpp.i
+.PHONY : Farm/farm.cpp.i
+
+Farm/farm.s: Farm/farm.cpp.s
+.PHONY : Farm/farm.s
+
+# target to generate assembly for a file
+Farm/farm.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CS4204_FIB.dir/build.make CMakeFiles/CS4204_FIB.dir/Farm/farm.cpp.s
+.PHONY : Farm/farm.cpp.s
+
+fibonacci/fibonacci.o: fibonacci/fibonacci.cpp.o
+.PHONY : fibonacci/fibonacci.o
+
+# target to build an object file
+fibonacci/fibonacci.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CS4204_FIB.dir/build.make CMakeFiles/CS4204_FIB.dir/fibonacci/fibonacci.cpp.o
+.PHONY : fibonacci/fibonacci.cpp.o
+
+fibonacci/fibonacci.i: fibonacci/fibonacci.cpp.i
+.PHONY : fibonacci/fibonacci.i
+
+# target to preprocess a source file
+fibonacci/fibonacci.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CS4204_FIB.dir/build.make CMakeFiles/CS4204_FIB.dir/fibonacci/fibonacci.cpp.i
+.PHONY : fibonacci/fibonacci.cpp.i
+
+fibonacci/fibonacci.s: fibonacci/fibonacci.cpp.s
+.PHONY : fibonacci/fibonacci.s
+
+# target to generate assembly for a file
+fibonacci/fibonacci.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CS4204_FIB.dir/build.make CMakeFiles/CS4204_FIB.dir/fibonacci/fibonacci.cpp.s
+.PHONY : fibonacci/fibonacci.cpp.s
+
 openMP.o: openMP.cpp.o
 .PHONY : openMP.o
 
@@ -153,6 +201,30 @@ openMP.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CS4204_FIB.dir/build.make CMakeFiles/CS4204_FIB.dir/openMP.cpp.s
 .PHONY : openMP.cpp.s
 
+test.o: test.cpp.o
+.PHONY : test.o
+
+# target to build an object file
+test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CS4204_FIB.dir/build.make CMakeFiles/CS4204_FIB.dir/test.cpp.o
+.PHONY : test.cpp.o
+
+test.i: test.cpp.i
+.PHONY : test.i
+
+# target to preprocess a source file
+test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CS4204_FIB.dir/build.make CMakeFiles/CS4204_FIB.dir/test.cpp.i
+.PHONY : test.cpp.i
+
+test.s: test.cpp.s
+.PHONY : test.s
+
+# target to generate assembly for a file
+test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CS4204_FIB.dir/build.make CMakeFiles/CS4204_FIB.dir/test.cpp.s
+.PHONY : test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -162,9 +234,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... CS4204_FIB"
+	@echo "... Farm/farm.o"
+	@echo "... Farm/farm.i"
+	@echo "... Farm/farm.s"
+	@echo "... fibonacci/fibonacci.o"
+	@echo "... fibonacci/fibonacci.i"
+	@echo "... fibonacci/fibonacci.s"
 	@echo "... openMP.o"
 	@echo "... openMP.i"
 	@echo "... openMP.s"
+	@echo "... test.o"
+	@echo "... test.i"
+	@echo "... test.s"
 .PHONY : help
 
 
