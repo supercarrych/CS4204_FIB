@@ -17,54 +17,54 @@ int worker(int i) {
 
 void *WorkerWrapper(void *args) {
     // Assuming your farm::Queue and farm::Task are defined, adjust the names if needed
-    farm::Queue *inputQueue = ((farm::Queue **)args)[0];
-    farm::Queue *outputQueue = ((farm::Queue **)args)[1];
-    farm::Task task;
+    farm<int>::Queue *inputQueue = ((farm<int>::Queue **)args)[0];
+    farm<int>::Queue *outputQueue = ((farm<int>::Queue **)args)[1];
+    farm<int>::Task task;
     int result;
 
 
     while (!inputQueue->EOS) {
-        task = farm::getTask(*inputQueue);
+        task = farm<int>::getTask(*inputQueue);
         if (inputQueue->task_queue.empty()) {
             inputQueue->EOS = true;
         }
         result = worker(task.parameter);
         task.result = result;
-        farm::putTask(*outputQueue, task);
+        farm<int>::putTask(*outputQueue, task);
     }
 
     pthread_exit(nullptr);
 }
 
 void fibonacci() {
-    farm::Queue inputQueue;
-    farm::Queue outputQueue;
-    farm::Task task;
+    farm<int>::Queue inputQueue;
+    farm<int>::Queue outputQueue;
+    farm<int>::Task task;
 
     inputQueue.EOS = false;
 
     for (int i = 0; i < 100; i++) {
         task.id = i;
         task.parameter = i;
-        farm::putTask(inputQueue, task);
+        farm<int>::putTask(inputQueue, task);
     }
 
-    farm::Queue *args[] = {&inputQueue, &outputQueue};
+    farm<int>::Queue *args[] = {&inputQueue, &outputQueue};
 
     printf("create thread\n");
-    farm::createFarm(reinterpret_cast<void (*)()>(WorkerWrapper), 4, args);
+    farm<int>::createFarm(reinterpret_cast<void (*)()>(WorkerWrapper), 4, args);
 
     std::cout<<inputQueue.EOS;
 
     for (int i = 0; i < 100; i++) {
-        task = farm::getTask(outputQueue);
+        task = farm<int>::getTask(outputQueue);
         printf("fib(%d) = ", i);
         std::cout<<task.result<<std::endl;
     }
 
 }
 
-
+//
 //int main() {
 //
 //    // 获取开始时间点

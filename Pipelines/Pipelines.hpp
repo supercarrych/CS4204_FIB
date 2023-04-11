@@ -1,21 +1,21 @@
 //
-// Created by 220010835 on 07/04/23.
+// Created by 220010835 on 11/04/23.
 //
 
-#ifndef CS4204_FIB_FARM_HPP
-#define CS4204_FIB_FARM_HPP
+#ifndef CS4204_FIB_PIPELINES_HPP
+#define CS4204_FIB_PIPELINES_HPP
+
 #include <iostream>
 #include <queue>
 #include <mutex>
 #include <condition_variable>
 
-template<typename T>
 class farm {
 public:
     typedef struct {
         int id; // worker ID
         int parameter; // The parameter passes to the function
-        T result;
+        unsigned short **result;
     } Task;
 
     typedef struct {
@@ -58,12 +58,13 @@ public:
 
     }
 
-    static void createFarm(void (*worker_wrapper)( ), int nw,void *args) {
-         for(int n=0; n < nw; n++){
-             makeThread(worker_wrapper,args);
-         }
+    static void createpipe(void (*worker_wrapper)( ), void *args) {
 
-     }
+            makeThread(worker_wrapper,args);
+            makeThread(worker_wrapper,args);
+
+
+    }
 
     static void putTask(Queue& q, Task& t) {
         //
@@ -83,4 +84,5 @@ public:
 };
 
 
-#endif //CS4204_FIB_FARM_HPP
+#endif //CS4204_FIB_PIPELINES_HPP
+

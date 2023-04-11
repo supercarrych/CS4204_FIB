@@ -138,20 +138,21 @@ unsigned short *process_image(task_t task) {
 
 void *WorkerWrapper(void *args) {
     // Assuming your farm::Queue and farm::Task are defined, adjust the names if needed
-    farm::Queue *inputQueue = ((farm::Queue **)args)[0];
-    farm::Queue *outputQueue = ((farm::Queue **)args)[1];
-    farm::Task task;
+    farm<unsigned short**>::Queue *inputQueue = ((farm<unsigned short**>::Queue **)args)[0];
+    farm<unsigned short**>::Queue *outputQueue = ((farm<unsigned short**>::Queue **)args)[1];
+    farm<unsigned short**>::Task task;
     int result;
 
     while (!inputQueue->EOS) {
-        task = farm::getTask(*inputQueue);
+        task = farm<unsigned short**>::getTask(*inputQueue);
         if (inputQueue->task_queue.empty()) {
             inputQueue->EOS = true;
         }
         string_p image_name_p = get_image_name(task.parameter);
         task_t task2 = read_image_and_mask(image_name_p);
-        task.result = reinterpret_cast<unsigned short **>(process_image(task2));;
-        farm::putTask(*outputQueue, task);
+
+        task.result = reinterpret_cast<unsigned short **>(process_image(task2));
+        farm<unsigned short**>::putTask(*outputQueue, task);
     }
 
     pthread_exit(nullptr);
@@ -159,14 +160,12 @@ void *WorkerWrapper(void *args) {
 
 
 int main(int argc, char *argv[]) {
-    farm::Queue inputQueue;//store task
-    farm::Queue outputQueue;//store result
-    farm::Task task;//store parameter
+    farm<unsigned short**>::Queue inputQueue;//store task
+    farm<unsigned short**>::Queue outputQueue;//store result
+    farm<unsigned short**>::Task task;//store parameter
 
     string_p image_name_p;
     unsigned int nr_images, pattern, do_chunking, min_chunk_size;
-//   if (argc<3)
-//    std::cerr << "use: " << argv[0] << " <imageSize> <nrImages> [<chunking>]\n";
     dim = 1024; // atoi(argv[1]);
     nr_images = 20; // atoi(argv[2]);
 
@@ -183,20 +182,20 @@ int main(int argc, char *argv[]) {
       //  N[i] = i;
         task.id = i;
         task.parameter = i;
-        farm::putTask(inputQueue, task);
+        farm<unsigned short**>::putTask(inputQueue, task);
 
 //        out_images[i] = new unsigned short[dim * dim];
     }
 
-    farm::Queue *args[] = {&inputQueue, &outputQueue};
-    farm::createFarm(reinterpret_cast<void (*)()>(WorkerWrapper), 2, args);
+    farm<unsigned short**>::Queue *args[] = {&inputQueue, &outputQueue};
+    farm<unsigned short**>::createFarm(reinterpret_cast<void (*)()>(WorkerWrapper), 2, args);
 
 
 
 
     for (int i = 0; i < nr_images; i++) {
 
-        task = farm::getTask(outputQueue);
+        task = farm<unsigned short**>::getTask(outputQueue);
         printf("image(%d) = ", i);
         std::cout<<task.result<<std::endl;
     }
